@@ -1,18 +1,18 @@
 <?php
-namespace Azet\V1\Rest\Asset;
+namespace Azet\V1\Rest\Booking;
 
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
 
-class AssetResource extends AbstractResourceListener
+class BookingResource extends AbstractResourceListener
 {
     /**
      *
-     * @var \AdFinder\Service\AssetService
+     * @var \AdFinder\Service\BookingService
      */
     private $service;
 
-    public function __construct(\Azet\Service\AssetService $service)
+    public function __construct(\Azet\Service\BookingService $service)
     {
         $this->service = $service;
     }

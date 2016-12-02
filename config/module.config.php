@@ -6,6 +6,7 @@ return array(
             'Azet\\Service\\UserService' => 'Azet\\Factory\\Service\\UserServiceFactory',
             'Azet\\Service\\AssetService' => 'Azet\\Factory\\Service\\AssetServiceFactory',
             'Azet\\V1\\Rest\\Asset\\AssetResource' => 'Azet\\V1\\Rest\\Asset\\AssetResourceFactory',
+            'Azet\\V1\\Rest\\Booking\\BookingResource' => 'Azet\\V1\\Rest\\Booking\\BookingResourceFactory',
         ),
     ),
     'router' => array(
@@ -28,12 +29,22 @@ return array(
                     ),
                 ),
             ),
+            'azet.rest.booking' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/azet/booking[/:booking_id]',
+                    'defaults' => array(
+                        'controller' => 'Azet\\V1\\Rest\\Booking\\Controller',
+                    ),
+                ),
+            ),
         ),
     ),
     'zf-versioning' => array(
         'uri' => array(
             0 => 'azet.rest.user',
             1 => 'azet.rest.asset',
+            2 => 'azet.rest.booking',
         ),
     ),
     'zf-rest' => array(
@@ -78,11 +89,34 @@ return array(
             'collection_class' => 'Azet\\V1\\Rest\\Asset\\AssetCollection',
             'service_name' => 'Asset',
         ),
+        'Azet\\V1\\Rest\\Booking\\Controller' => array(
+            'listener' => 'Azet\\V1\\Rest\\Booking\\BookingResource',
+            'route_name' => 'azet.rest.booking',
+            'route_identifier_name' => 'booking_id',
+            'collection_name' => 'booking',
+            'entity_http_methods' => array(
+                0 => 'GET',
+                1 => 'PATCH',
+                2 => 'PUT',
+                3 => 'DELETE',
+            ),
+            'collection_http_methods' => array(
+                0 => 'GET',
+                1 => 'POST',
+            ),
+            'collection_query_whitelist' => array(),
+            'page_size' => 25,
+            'page_size_param' => null,
+            'entity_class' => 'Azet\\Entity\\Booking',
+            'collection_class' => 'Azet\\V1\\Rest\\Booking\\BookingCollection',
+            'service_name' => 'Booking',
+        ),
     ),
     'zf-content-negotiation' => array(
         'controllers' => array(
             'Azet\\V1\\Rest\\User\\Controller' => 'HalJson',
             'Azet\\V1\\Rest\\Asset\\Controller' => 'HalJson',
+            'Azet\\V1\\Rest\\Booking\\Controller' => 'HalJson',
         ),
         'accept_whitelist' => array(
             'Azet\\V1\\Rest\\User\\Controller' => array(
@@ -95,6 +129,11 @@ return array(
                 1 => 'application/hal+json',
                 2 => 'application/json',
             ),
+            'Azet\\V1\\Rest\\Booking\\Controller' => array(
+                0 => 'application/vnd.azet.v1+json',
+                1 => 'application/hal+json',
+                2 => 'application/json',
+            ),
         ),
         'content_type_whitelist' => array(
             'Azet\\V1\\Rest\\User\\Controller' => array(
@@ -102,6 +141,10 @@ return array(
                 1 => 'application/json',
             ),
             'Azet\\V1\\Rest\\Asset\\Controller' => array(
+                0 => 'application/vnd.azet.v1+json',
+                1 => 'application/json',
+            ),
+            'Azet\\V1\\Rest\\Booking\\Controller' => array(
                 0 => 'application/vnd.azet.v1+json',
                 1 => 'application/json',
             ),
@@ -155,6 +198,24 @@ return array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'azet.rest.asset',
                 'route_identifier_name' => 'asset_id',
+                'hydrator' => 'DoctrineModule\\Stdlib\\Hydrator\\DoctrineObject',
+            ),
+            'Azet\\V1\\Rest\\Booking\\BookingEntity' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'azet.rest.booking',
+                'route_identifier_name' => 'booking_id',
+                'hydrator' => 'Zend\\Hydrator\\ArraySerializable',
+            ),
+            'Azet\\V1\\Rest\\Booking\\BookingCollection' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'azet.rest.booking',
+                'route_identifier_name' => 'booking_id',
+                'is_collection' => true,
+            ),
+            'Azet\\Entity\\Booking' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'azet.rest.booking',
+                'route_identifier_name' => 'booking_id',
                 'hydrator' => 'DoctrineModule\\Stdlib\\Hydrator\\DoctrineObject',
             ),
         ),

@@ -4,9 +4,39 @@
 
 This is a API.
 
+## Requirements
+
+Please see the composer.json file.
+
 ## Installation using Composer
 
+Run the following composer command:
+  ```bash
+  $ composer require --dev nynka/azet-api
+  ```
 
+Alternately, manually add the following to your composer.json, in the require section:
+
+  ```bash
+  "require": {
+    "nynka/azet-api": "dev-master"
+  }
+  ```
+
+And then run composer update to ensure the module is installed.
+
+Finally, add the module name to your project's config/application.config.php under the modules key:
+  
+  ```bash
+  return [
+    /* ... */
+    'modules' => [
+      /* ... */
+      'Azet',
+    ],
+    /* ... */
+  ];
+  ```
 
 ## Running Unit Tests
 

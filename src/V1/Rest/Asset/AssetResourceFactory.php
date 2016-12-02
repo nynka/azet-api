@@ -1,12 +1,14 @@
 <?php
 namespace Azet\V1\Rest\Asset;
 
+use Azet\Service\AssetService;
+
 class AssetResourceFactory
 {
     public function __invoke($services)
     {
-        /* @var $service \AdFinder\Service\AssetService */
-        $service= $services->get(\Azet\Service\AssetService::class);
+        /* @var $service AssetService */
+        $service = $services->get(AssetService::class);
 
         return new AssetResource($service);
     }
