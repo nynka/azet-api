@@ -1,6 +1,12 @@
 {
     "name": "nynka/azet-api",
     "description": "Azet API as ZF3/Apigility module",
+    "authors": [
+        {
+            "name": "Henric Nylund",
+            "email": "henric.nylund@gmail.com"
+        }
+    ],
     "type": "project",
     "license": "BSD-3-Clause",
     "keywords": [
@@ -10,7 +16,7 @@
         "apigility",
         "zf"
     ],
-    "homepage": "http://api.mediaresearch.se",
+    "homepage": "https://api.azet.se",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
