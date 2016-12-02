@@ -1,0 +1,41 @@
+{
+    "name": "nynka/azet-api",
+    "description": "Azet API as ZF3/Apigility module",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "keywords": [
+		"azet",
+		"nynka",
+        "api",
+        "apigility",
+        "zf"
+    ],
+    "homepage": "http://api.mediaresearch.se",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.0",
+        "zfcampus/zf-api-problem": "~1.0-dev",
+        "zfcampus/zf-rest": "~1.0-dev"
+
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Azet\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AzetTest\\": "test/"
+        }
+    },
+    "extra": [],
+    "scripts": {
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "test": "phpunit"
+    }
+}
