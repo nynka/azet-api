@@ -1,12 +1,5 @@
 <?php
 
-/*
- * Copyright (C) Media Research i Östersund AB - All Rights Reserved
- * Unauthorized copying of this file, via any medium is strictly prohibited
- * Proprietary and confidential
- * Written by Henric Nylund <henric.nylund@mediaresearch.se>, September 2016
- */
-
 namespace Azet\Service;
 
 use Azet\Entity\Asset;
